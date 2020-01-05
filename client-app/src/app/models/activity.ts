@@ -1,4 +1,4 @@
-export interface IACtivity {
+export interface IActivity {
   id: string;
   title: string;
   description: string;
