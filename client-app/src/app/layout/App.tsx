@@ -44,7 +44,7 @@ const App: React.FC<RouteComponentProps> = ({ location }) => {
                 <Route exact path="/activities" component={ActivityDashboard} />
                 <Route path="/activities/:id" component={ActivityDetails} />
                 <Route key={location.key} path={["/createActivity", "/manage/:id"]} component={ActivityForm} />
-                <Route patch="/login" component={LoginForm} />
+                <Route path="/login" component={LoginForm} />
                 <Route component={NotFound} />
               </Switch>
             </Container>
