@@ -22,7 +22,7 @@ namespace Infrastructure.Photos
             _cloudinary = new Cloudinary(acc);
         }
 
-        public PhotoUplopadResult AddPhoto(IFormFile file)
+        public PhotoUploadResult AddPhoto(IFormFile file)
         {
             var uploadResult = new ImageUploadResult();
 
@@ -44,7 +44,7 @@ namespace Infrastructure.Photos
                 throw new Exception(uploadResult.Error.Message);
             }
 
-            return new PhotoUplopadResult
+            return new PhotoUploadResult
             {
                 PublicId = uploadResult.PublicId,
                 Url = uploadResult.SecureUri.AbsoluteUri

@@ -16,10 +16,8 @@ namespace Application.Profiles
 
         public class Handler : IRequestHandler<Query, Profile>
         {
-
             private readonly DataContext _context;
             public Handler(DataContext context)
-
             {
                 _context = context;
             }
@@ -28,7 +26,7 @@ namespace Application.Profiles
             {
                 var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == request.Username);
 
-                return new Profile()
+                return new Profile
                 {
                     DisplayName = user.DisplayName,
                     Username = user.UserName,

@@ -8,7 +8,7 @@ interface IProps {
   attendees: IAttendee[];
 }
 
-const ActivityDetailedSiderbar: React.FC<IProps> = ({ attendees }) => {
+const ActivityDetailedSidebar: React.FC<IProps> = ({ attendees }) => {
   return (
     <Fragment>
       <Segment textAlign="center" style={{ border: "none" }} attached="top" secondary inverted color="teal">
@@ -38,4 +38,4 @@ const ActivityDetailedSiderbar: React.FC<IProps> = ({ attendees }) => {
   );
 };
 
-export default observer(ActivityDetailedSiderbar);
+export default observer(ActivityDetailedSidebar);

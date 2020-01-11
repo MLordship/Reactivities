@@ -11,4 +11,5 @@ namespace Application.Profiles
         public string Bio { get; set; }
         public ICollection<Photo> Photos { get; set; }
     }
+
 }
