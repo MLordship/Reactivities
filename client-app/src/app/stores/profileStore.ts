@@ -14,6 +14,8 @@ export default class ProfileStore {
   @observable loadingProfile = true;
   @observable uploadingPhoto = false;
   @observable loading = false;
+  @observable submitting = false;
+  @observable updatingProfile = false;
 
   @computed get isCurrentUser() {
     if (this.rootStore.userStore.user && this.profile) {
@@ -93,6 +95,43 @@ export default class ProfileStore {
         this.loading = false;
       });
       toast.error("Problem deleting photo");
+      console.log(error);
+    }
+  };
+
+  @action editProfile = async (profile: IProfile) => {
+    this.submitting = true;
+    try {
+      await agent.Profiles.update(profile);
+      runInAction("editing profile", () => {
+        this.rootStore.userStore.user!.displayName = profile.displayName;
+        this.submitting = false;
+      });
+    } catch (error) {
+      runInAction("editing profile error", () => {
+        this.submitting = false;
+      });
+      toast.error("Problem submitting data");
+      console.log(error.response);
+    }
+  };
+
+  @action updateProfile = async (profile: Partial<IProfile>) => {
+    this.updatingProfile = true;
+    try {
+      await agent.Profiles.updateProfile(profile);
+      runInAction("updating profile", () => {
+        if (profile.displayName !== this.rootStore.userStore.user!.displayName) {
+          this.rootStore.userStore.user!.displayName = profile.displayName!;
+        }
+        this.profile = { ...this.profile!, ...profile };
+        this.updatingProfile = false;
+      });
+    } catch (error) {
+      toast.error("Problem updating profile");
+      runInAction("updating profile error", () => {
+        this.updatingProfile = false;
+      });
       console.log(error);
     }
   };

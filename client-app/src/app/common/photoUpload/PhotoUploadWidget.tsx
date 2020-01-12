@@ -39,7 +39,7 @@ const PhotoUploadWidget: React.FC<IProps> = ({ loading, uploadPhoto }) => {
               <div className="img-preview" style={{ minHeight: "200px", overflow: "hidden" }} />
               <Button.Group width={2}>
                 <Button positive icon="check" loading={loading} onClick={() => uploadPhoto(image!)} />
-                <Button icon="close" disable={loading} onClick={() => setFiles([])} />
+                <Button icon="close" disabled={loading} onClick={() => setFiles([])} />
               </Button.Group>
             </Fragment>
           )}
