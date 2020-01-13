@@ -59,6 +59,9 @@ export default class ActivityStore {
       })
       .then(() => console.log("Connection stopped"))
       .catch(err => console.log(err));
+    runInAction(() => {
+      this.activity = null;
+    });
   };
 
   @action addComment = async (values: any) => {
