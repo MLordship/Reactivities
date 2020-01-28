@@ -21,6 +21,7 @@ namespace Persistence
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.Entity<Activity>(entity => entity.Property(m => m.Id).HasMaxLength(255));
 
             builder.Entity<Value>()
                 .HasData(
