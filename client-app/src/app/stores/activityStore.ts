@@ -96,6 +96,7 @@ export default class ActivityStore {
   };
 
   @action stopHubConnection = () => {
+    console.log(this.activity);
     this.hubConnection!.invoke("RemoveFromGroup", this.activity!.id)
       .then(() => {
         this.hubConnection!.stop();
